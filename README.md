@@ -2,7 +2,6 @@
 A data warehouse, I mean home, for all my personal business. Hey big tech, I'll share my models, but hands off my data. 📈🏠❤️
 
 
-## iMessages
 
 ### Setup
 1. Restart your Mac in Recovery Mode, open a Terminal, and run `csrutil disable`.  **BE CAREFUL!** This disables System Integrity Protection (SIP) and can expose your system to security risks. Only do this if you understand the implications.
@@ -31,6 +30,9 @@ imessages:
 ```
 Adjust the `path` above to your where you want to store you iMessages DuckDB file. E.g., `path: /Users/my_name/imessages_etl/imessages.duckdb`
 4. From the terminal, enter the `imessages/dbt` folder and Run `dbt deps` to install the dependencies
+
+
+## iMessages
 
 ### Dbt
 
