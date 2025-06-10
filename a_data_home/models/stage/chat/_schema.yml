@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: stg_chat
+  - name: stg_message
+    description: Test

@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: int_contacts_normalized
+    description: "Normalized contact information for matching with message data"
+    columns:
+    - name: normalized_number
+      description: "Standardized phone number for matching"
+    - name: contact_display_name  
+      description: "Formatted contact name"
+    - name: phone_type
+      description: "Classification of phone number type"

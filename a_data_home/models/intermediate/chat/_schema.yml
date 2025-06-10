@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: int_messages
+    description: "Cleaned and enriched message data with timeline calculations"
+    columns:
+      - name: message_id
+        description: "Primary key - message rowid"
+      - name: chat_id
+        description: "Chat identifier"
+      - name: message_guid
+        description: "Unique message identifier"
+      - name: sender_identifier
+        description: "Phone/email of sender"
+      - name: message_text
+        description: "Combined text from text and attributed_body"
+      - name: message_date
+        description: "Timestamp when message was sent"
+      - name: date_read
+        description: "Timestamp when message was read (null if unread)"
+      - name: date_delivered
+        description: "Timestamp when message was delivered"
+      - name: is_from_me
+        description: "Whether message was sent by device owner"
+      - name: conversation_partner
+        description: "The other person in the conversation"
+      - name: response_time_minutes
+        description: "Minutes between receiving message and sending reply"
+      - name: read_time_minutes
+        description: "Minutes between receiving message and reading it"
+      - name: delivery_time_seconds
+        description: "Seconds between sending and delivery"
+
+  - name: int_conversations
+    description: "Conversation-level aggregations and timeline metrics"
+    columns:
+      - name: conversation_id
+        description: "Primary key - chat identifier"
+      - name: conversation_partner
+        description: "Main participant (for 1:1 chats)"
+      - name: is_group_chat
+        description: "Whether this is a group conversation"
+      - name: first_message_date
+        description: "When conversation started"
+      - name: last_message_date
+        description: "Most recent message"
+      - name: total_messages
+        description: "Total message count"
+      - name: messages_sent
+        description: "Messages sent by device owner"
+      - name: messages_received
+        description: "Messages received from others"
+      - name: avg_response_time_hours
+        description: "Average time to respond to messages"
+      - name: conversation_duration_days
+        description: "Days between first and last message"
+
+  - name: int_message_threads
+    description: "Message threading and reply chains"
+    columns:
+      - name: thread_id
+        description: "Thread identifier"
+      - name: original_message_id
+        description: "First message in thread"
+      - name: reply_message_id
+        description: "Reply message ID"
+      - name: thread_depth
+        description: "How deep in reply chain"
+      - name: time_to_reply_minutes
+        description: "Time between original and reply"

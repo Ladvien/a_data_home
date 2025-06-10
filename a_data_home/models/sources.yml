@@ -1,0 +1,130 @@
+version: 2
+
+sources:
+  - name: chat
+    schema: imessages
+    description: "Core iMessages chat database tables"
+    tables:
+      - name: chat
+        description: "Chat rooms/conversations - each row represents a conversation thread"
+        columns:
+          - name: rowid
+            description: "Primary key for chat table"
+          - name: guid
+            description: "Global unique identifier for the chat"
+          - name: chat_identifier
+            description: "Phone number, email, or group chat identifier"
+          - name: service_name
+            description: "iMessage, SMS, or other messaging service"
+          - name: display_name
+            description: "Chat display name (for group chats)"
+          - name: group_id
+            description: "Group identifier for group messages"
+          - name: is_archived
+            description: "Whether the chat is archived"
+          - name: last_read_message_timestamp
+            description: "Timestamp of last read message (Apple epoch)"
+          - name: room_name
+            description: "Group chat room name"
+          - name: account_id
+            description: "Account ID associated with chat"
+
+      - name: chat_message_join
+        description: "Junction table linking chats to messages (many-to-many)"
+        columns:
+          - name: chat_id
+            description: "Foreign key to chat.rowid"
+          - name: message_id
+            description: "Foreign key to message.rowid"
+          - name: message_date
+            description: "Message timestamp (Apple epoch format)"
+
+      - name: message
+        description: "Individual messages - core message data"
+        columns:
+          - name: rowid
+            description: "Primary key for message table"
+          - name: guid
+            description: "Global unique identifier for the message"
+          - name: text
+            description: "Plain text content of message"
+          - name: attributedbody
+            description: "Rich text content (binary format with formatting)"
+          - name: handle_id
+            description: "Foreign key to handle table (sender/recipient)"
+          - name: date
+            description: "Message sent timestamp (Apple epoch: nanoseconds since 2001-01-01)"
+          - name: date_read
+            description: "Message read timestamp (Apple epoch, 0 if unread)"
+          - name: date_delivered
+            description: "Message delivered timestamp (Apple epoch, 0 if undelivered)"
+          - name: is_from_me
+            description: "Boolean: true if sent by device owner, false if received"
+          - name: is_read
+            description: "Boolean: whether message has been read"
+          - name: is_delivered
+            description: "Boolean: whether message was delivered"
+          - name: is_sent
+            description: "Boolean: whether message was sent successfully"
+          - name: is_system_message
+            description: "Boolean: system messages (typing indicators, read receipts)"
+          - name: is_service_message
+            description: "Boolean: service-related messages"
+          - name: service
+            description: "Messaging service (iMessage, SMS, etc.)"
+          - name: type
+            description: "Message type (0=text, others for attachments/special)"
+          - name: cache_has_attachments
+            description: "Boolean: whether message has attachments"
+          - name: associated_message_guid
+            description: "GUID of message this is associated with (reactions, replies)"
+          - name: associated_message_type
+            description: "Type of association (reaction, reply, etc.)"
+          - name: thread_originator_guid
+            description: "GUID of original message in thread"
+          - name: reply_to_guid
+            description: "GUID of message being replied to"
+
+  - name: address_book
+    description: "macOS Contacts database tables"
+    tables:
+      - name: ZABCDRECORD
+        description: "Contact records from Address Book"
+        columns:
+          - name: z_pk
+            description: "Primary key for contact record"
+          - name: zfirstname
+            description: "Contact's first name"
+          - name: zlastname
+            description: "Contact's last name"
+          - name: zorganization
+            description: "Contact's organization"
+          - name: znickname
+            description: "Contact's nickname"
+
+      - name: ZABCDPHONENUMBER
+        description: "Phone numbers associated with contacts"
+        columns:
+          - name: zowner
+            description: "Foreign key to ZABCDRECORD.z_pk"
+          - name: zfullnumber
+            description: "Complete phone number with formatting"
+          - name: zlabel
+            description: "Phone number label (mobile, home, work, etc.)"
+          - name: zorderingindex
+            description: "Order of phone numbers for a contact"
+
+  - name: dev
+    description: "Development tables for processed data"
+    tables:
+      - name: attributed_body_cleaned
+        description: "Processed attributed body content (rich text extracted)"
+        columns:
+          - name: rowid
+            description: "Corresponds to message.rowid"
+          - name: guid
+            description: "Message GUID"
+          - name: text
+            description: "Extracted plain text from attributed body"
+          - name: attributed_body
+            description: "Original attributed body data"

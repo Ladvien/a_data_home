@@ -1,0 +1,5 @@
+{
+    "sqlfluff.executablePath": "/Users/ladvien/imessages_etl/.venv/bin/sqlfluff",
+    "dbt.perspectiveTheme": "Vintage",
+    "dbt.queryLimit": 500
+}
