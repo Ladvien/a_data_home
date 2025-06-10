@@ -9,26 +9,26 @@ A data warehouse, I mean home, for all my personal business. Hey big tech, I'll 
 
 ```plaintext
 .
-├── a_data_home
-│   ├── analyses
-│   ├── dbs
-│   ├── dbt_project.yml
-│   ├── logs
-│   ├── macros
-│   ├── models
-│   ├── seeds
-│   ├── snapshots
-│   ├── target
-│   └── tests
-├── LICENSE
-├── logs
-│   └── dbt.log
-├── poetry.lock
-├── pyproject.toml
-├── README.md
-└── scripts
-    ├── decode.py
-    └── prepare.py
+├── a_data_home/                # Main dbt project directory
+│   ├── analyses/              # Ad hoc analyses or experimental SQL queries (rarely used)
+│   ├── dbs/                   # Local DuckDB database files and attached SQLite DBs (e.g., chat.db)
+│   ├── dbt_project.yml        # Main dbt project config (name, version, model paths, etc.)
+│   ├── logs/                  # Optional logs directory for runtime info
+│   ├── macros/                # Custom Jinja macros to reuse SQL logic across models
+│   ├── models/                # Core dbt models (SQL transformations, e.g., `stg_`, `dim_`, `fct_`)
+│   ├── seeds/                 # CSV files loaded as-is into the warehouse (e.g., lookup tables)
+│   ├── snapshots/             # dbt snapshots for slowly changing dimensions (rare in personal use)
+│   ├── target/                # Auto-generated compiled dbt artifacts (created by `dbt run`)
+│   └── tests/                 # Custom data and schema tests for validation
+├── LICENSE                    # Project license (e.g., MIT, Apache 2.0)
+├── logs/
+│   └── dbt.log                # Log output from dbt runs (for debugging)
+├── poetry.lock                # Locked Python dependencies for reproducibility
+├── pyproject.toml            # Python project config for managing dependencies and tooling
+├── README.md                 # Project overview and setup instructions (this file)
+└── scripts/                  
+    ├── decode.py             # Script to decode serialized or binary data (e.g., `attributedBody`)
+    └── prepare.py            # Script to preprocess or extract data for loading into DuckDB
 ```
 
 ## General Dbt Profile Setup Instructions
