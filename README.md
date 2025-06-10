@@ -4,6 +4,33 @@ A data warehouse, I mean home, for all my personal business. Hey big tech, I'll 
 
 ---
 
+## File Structure
+
+
+```plaintext
+.
+├── a_data_home
+│   ├── analyses
+│   ├── dbs
+│   ├── dbt_project.yml
+│   ├── logs
+│   ├── macros
+│   ├── models
+│   ├── seeds
+│   ├── snapshots
+│   ├── target
+│   └── tests
+├── LICENSE
+├── logs
+│   └── dbt.log
+├── poetry.lock
+├── pyproject.toml
+├── README.md
+└── scripts
+    ├── decode.py
+    └── prepare.py
+```
+
 ## General Dbt Profile Setup Instructions
 
 To get started with `dbt` and DuckDB:
