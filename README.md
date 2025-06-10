@@ -22,13 +22,13 @@ A data warehouse, I mean home, for all my personal business. Hey big tech, I'll 
 │   └── tests/                 # Custom data and schema tests for validation
 ├── LICENSE                    # Project license (e.g., MIT, Apache 2.0)
 ├── logs/
-│   └── dbt.log               # Log output from dbt runs (for debugging)
-├── poetry.lock               # Locked Python dependencies for reproducibility
-├── pyproject.toml            # Python project config for managing dependencies and tooling
-├── README.md                 # Project overview and setup instructions (this file)
+│   └── dbt.log                # Log output from dbt runs (for debugging)
+├── poetry.lock                # Locked Python dependencies for reproducibility
+├── pyproject.toml             # Python project config for managing dependencies and tooling
+├── README.md                  # Project overview and setup instructions (this file)
 └── scripts/                  
-    ├── decode.py             # Script to decode serialized or binary data (e.g., `attributedBody`)
-    └── prepare.py            # Script to preprocess or extract data for loading into DuckDB
+    ├── decode.py              # Script to decode serialized or binary data (e.g., `attributedBody`)
+    └── prepare.py             # Script to preprocess or extract data for loading into DuckDB
 ```
 
 ## General Dbt Profile Setup Instructions
