@@ -9,7 +9,7 @@ A data warehouse, I mean home, for all my personal business. Hey big tech, I'll 
 
 ```plaintext
 .
-├── a_data_home/                # Main dbt project directory
+├── a_data_home/               # Main dbt project directory
 │   ├── analyses/              # Ad hoc analyses or experimental SQL queries (rarely used)
 │   ├── dbs/                   # Local DuckDB database files and attached SQLite DBs (e.g., chat.db)
 │   ├── dbt_project.yml        # Main dbt project config (name, version, model paths, etc.)
@@ -22,8 +22,8 @@ A data warehouse, I mean home, for all my personal business. Hey big tech, I'll 
 │   └── tests/                 # Custom data and schema tests for validation
 ├── LICENSE                    # Project license (e.g., MIT, Apache 2.0)
 ├── logs/
-│   └── dbt.log                # Log output from dbt runs (for debugging)
-├── poetry.lock                # Locked Python dependencies for reproducibility
+│   └── dbt.log               # Log output from dbt runs (for debugging)
+├── poetry.lock               # Locked Python dependencies for reproducibility
 ├── pyproject.toml            # Python project config for managing dependencies and tooling
 ├── README.md                 # Project overview and setup instructions (this file)
 └── scripts/                  
